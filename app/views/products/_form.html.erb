@@ -1,0 +1,57 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= content_tag :div, 'data-controller': 'scanner' do %>
+      <%= content_tag :canvas, nil, width: 350, height: 240, 'data-scanner-target': 'canvas' %>
+      <%= form.text_field :name, id: 'lolz', class: 'form-control', 'data-scanner-target': 'output' %>
+      <%#= form.label :url %>
+      <%#= form.text_field :url, class: 'form-control' %>
+      
+    <% end %>
+  </div>
+<input type="button" value="click" id="kk" />
+  <div class="actions">
+    <%= form.submit %>
+    <%#= link_to 'Show', "#{lolz.val()}" %>
+    
+    <%# form.text_field :name, 'data-scanner-target': 'output' do |product| %>
+      <%#= link_to 'Show', QrCode.call(product_url(@product)) %>
+      <%#= link_to 'Show', product_url(@product) %>
+      <%# product_url(@product) %>
+      <%#= button_to "Show", products_url, :id => "open-contacts-dialog-btn",
+      :class => "inbox-sf-add-btn tip", :method => :get %>
+    <%# end %>
+  </div>
+<% end %>
+
+
+<br>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var lolz = $('#lolz');
+        var kk = $('#kk');
+        kk.click(function() {
+            alert(lolz.val());
+        });
+         
+    });
+</script>
+
+
+    <!-- <input type="text" name="enter" class="enter" value="" id="lolz"/> -->
+    
+
+
+

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+<p>
+  <strong>ID:</strong>
+  <%= @product.id %>
+</p>
+
+<p>
+  <%# product_url(@product) %>
+  <%# qrcode = RQRCode::QRCode.new(product_url(@product)) %>
+  <%# qrcode.as_svg(
+    offset: 0,
+    color: '000000',
+    module_size: 5,
+    standalone: true
+  ).html_safe %>
+  <%= QrCode.call(product_url(@product))%>
+</p>
+text: 
+<%= @product.url %>
+
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
