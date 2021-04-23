@@ -1,0 +1,25 @@
+<%= form_with model: @use_part do |form| %>
+  <!-- <%# if @use_part.errors.any? %>
+    <div id="error_explanation">
+      <h2><%#= pluralize(use_part.errors.count, "error") %> prohibited this use_part from being saved:</h2>
+
+      <ul>
+        <%#use_part.errors.each do |error| %>
+          <li><%#= error.full_message %></li>
+        <%# end %>
+      </ul>
+    </div>
+  <%# end %> -->
+
+  <div class="field">
+    <%= form.label :Product_id %><br>
+    <%= form.text_field :product_id %><br>
+    <%= form.label :quantity %><br>
+    <%= form.text_field :qty %>
+    <br><br>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+   
+  </div>
+<% end %>

@@ -1,5 +1,12 @@
 class Product < ApplicationRecord
-	
+	after_create :generate_code
+	# has_manny: use_parts
+
+	def generate_code
+	  self.url = SecureRandom.hex
+	  # self.url = product_path
+	  save
+	end
 
 
 	def self.search(search)
