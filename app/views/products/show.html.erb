@@ -22,7 +22,7 @@
 </p>
 
 <p>
-  <%= image_tag @product.image.url %>
+  <%= image_tag @product.image.url if @product.image %>
 </p>
 
 <br>
