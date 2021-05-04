@@ -1,0 +1,32 @@
+
+<div class="max_qty">
+  Quantity available: <%= @product.qty %>
+</div>
+<br><br>
+
+<%= form_with(url: do_use_product_path(@product),local: true) do |form| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2>Error:</h2>
+
+      <ul>
+        <% @product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= form.label :qty %>
+    <%= form.number_field :qty, value: params[:qty] %>
+  </div>
+<br><br>
+  <div class="actions">
+    <%# if @product.qty >= params[:qty].to_i  %>
+      <%= form.submit "Use", class: "btn btn-primary " %>
+    <%# end %>
+  </div>
+<% end %>

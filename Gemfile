@@ -12,7 +12,7 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
-
+gem 'carrierwave'
 gem 'activemodel', '>= 5.2.4.4'
 
 gem 'bootsnap', '>= 1.4.4', require: false

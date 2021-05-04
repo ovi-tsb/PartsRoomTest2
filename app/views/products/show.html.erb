@@ -21,26 +21,20 @@
   <%= QrCode.call(product_url(@product))%>
 </p>
 
+<p>
+  <%= image_tag @product.image.url %>
+</p>
 
-text: 
-<%= @product.url %>
 <br>
 Quantity: 
 <%= @product.qty %>
+<br><br>
 
+<%= link_to 'Use', use_product_path(@product), class: "btn btn-primary" %>
 
+<br>
+<br>
 
-
-
-
-<%#= form_for :use_part do |f| %>
-
-  <!-- <div class="well"> -->
-    <%#= f.fields_for :use_parts, @use_part do |f| %>
-      <%#= render 'use_part_fields', f: f %>
-    <%# end %>
-  <!-- </div>  -->
-<%# end %>
 
 <br><br>
 

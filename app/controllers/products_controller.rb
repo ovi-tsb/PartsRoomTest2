@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
-  
+  # before_action :set_product, only: [:show, :edit, :update, :destroy, :new_qty, :do_use, :use]
+  before_action :set_product, only: %i[ show edit update destroy use do_use]
   
   # GET /products
   # GET /products.json
@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  
   # GET /products/1/edit
   def edit
   end
@@ -65,6 +66,20 @@ class ProductsController < ApplicationController
     end
   end
 
+ def use
+ end
+
+ def do_use
+    if @product.qty >= params[:qty].to_i
+     @product.update qty: @product.qty - params[:qty].to_i
+     redirect_to @product, notice: "Product was successfully updated."
+   else
+     @product.errors.add(:qty, "more than available quantity")
+     render :use
+   end
+ end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -73,7 +88,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:id, :name, :url, :qty)
+      params.require(:product).permit(:id, :name, :url, :qty, :image)
     end
 
     

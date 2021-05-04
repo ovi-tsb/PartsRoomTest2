@@ -8,14 +8,25 @@ Rails.application.routes.draw do
   get 'use_parts/new'
 
 
-  resources :products
+  # resources :products do
+  #   collection do
+  #     get 'new_qty/:id' => 'products#new_qty', as: :new_qty
+  #   end
+  # end
+
+
+  resources :products do
+    member do
+      get :use
+      post :do_use
+    end
+  end
+  
   root to: 'products#index'
 
 
-  get 'products/index'
-  get 'products/new'
-  get 'products/show'
-  get 'products/edit'
 
   resources :products, path: "show"
+
+
 end

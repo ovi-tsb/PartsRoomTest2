@@ -12,14 +12,15 @@
   <%# end %> -->
 
   <div class="field">
-    <%= form.label :Product_id %><br>
-    <%= form.text_field :product_id %><br>
-    <%= form.label :quantity %><br>
+    <%#= form.label :Product_id %><br>
+    <%#= form.text_field :product_id %><br>
+    <%= form.label :use_quantity %><br>
     <%= form.text_field :qty %>
     <br><br>
   </div>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Use" %>
    
   </div>
 <% end %>
+<br><br>

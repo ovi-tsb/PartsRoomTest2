@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 	after_create :generate_code
-	# has_manny: use_parts
+	mount_uploader :image, ImageUploader
 
 	def generate_code
 	  self.url = SecureRandom.hex
@@ -21,15 +21,6 @@ class Product < ApplicationRecord
 	  else
 	    # find(:all)
 	    Product.all
-	  end
-	end
-
-	def self.search_1(search_1)
-	  if search_1
-	    # find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-	    where(" QrCode.call(product_url(product)) LIKE ?", "%#{search_1}%")
-	  else
-	    find(:all)
 	  end
 	end
 

@@ -2,7 +2,8 @@ class UsePartsController < ApplicationController
   before_action :set_use_part, only: [:show, :edit, :update, :destroy]
 
   def index
-    @use_part = UsePart.all
+    @use_parts = UsePart.all
+    # @use_part = UsePart.all
   end
 
   def edit
