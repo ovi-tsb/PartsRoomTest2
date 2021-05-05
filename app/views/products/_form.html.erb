@@ -13,13 +13,13 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= content_tag :div, 'data-controller': 'scanner' do %>
-      <%= content_tag :canvas, nil, width: 350, height: 240, 'data-scanner-target': 'canvas' %>
+    <%#= content_tag :div, 'data-controller': 'scanner' do %>
+      <%#= content_tag :canvas, nil, width: 350, height: 240, 'data-scanner-target': 'canvas' %>
       <%= form.text_field :name, id: 'lolz', class: 'form-control', 'data-scanner-target': 'output' %>
       <%#= form.label :url %>
       <%#= form.text_field :url, class: 'form-control' %>
       
-    <% end %>
+    <%# end %>
 
     <%= form.label :quantity %><br>
     <%= form.text_field :qty %>
@@ -27,8 +27,9 @@
   </div>
   <div class="field">
     <%= form.label :image %><br>
-    <%= form.file_field :image, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+    <%= form.file_field :image, accept: "image/jpeg, image/jpg, image/gif, image/png", class: "glyphicon glyphicon-download-alt" %>
   </div>
+  <br><br>
 
 
   <div class="actions">

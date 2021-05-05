@@ -13,7 +13,12 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'carrierwave'
+gem 'rmagick'
 gem 'activemodel', '>= 5.2.4.4'
+
+gem 'devise', '~> 4.2'
+# gem 'bootstrap', '~> 4.1.1'
+# gem 'jquery-rails'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 

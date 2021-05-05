@@ -1,36 +1,46 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%#= notice %></p> -->
 
-<p>
+<h4>
   <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+  <%= @product.name.capitalize %>
+</h4>
 <p>
-  <strong>ID:</strong>
+  <strong>Part ID:</strong>
   <%= @product.id %>
 </p>
-
-<p>
-  <%# product_url(@product) %>
-  <%# qrcode = RQRCode::QRCode.new(product_url(@product)) %>
-  <%# qrcode.as_svg(
-    offset: 0,
-    color: '000000',
-    module_size: 5,
-    standalone: true
-  ).html_safe %>
-  <%= QrCode.call(product_url(@product))%>
-</p>
-
-<p>
-  <% if @product.image.url %>
-    <%= image_tag @product.image.url %>
-  <% end %>
-</p>
-
-<br>
-Quantity: 
-<%= @product.qty %>
+<div class="card card-body bg-light">
+  <div class="row">
+    <div class="col-sm">
+      <div class="product-image">
+        <% if @product.image.url %>
+          <%= image_tag @product.image.url %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm">
+      <%# product_url(@product) %>
+        <%# qrcode = RQRCode::QRCode.new(product_url(@product)) %>
+        <%# qrcode.as_svg(
+          offset: 0,
+          color: '000000',
+          module_size: 5,
+          standalone: true
+        ).html_safe %>
+        <%= QrCode.call(product_url(@product))%>
+    </div>
+    <div class="col-sm">
+      <p>
+        Sure officially version says the cards are the new replacements for Bootstrap wells. But Cards are a quite broad Bootstrap components now. In simple terms, you can also use Bootstrap Jumbotron too.
+      </p>
+    </div>
+    
+  </div>
+</div>
 <br><br>
+<h4>
+Inventory: 
+<%= @product.qty %>
+</h4>
 
 <%= link_to 'Use', use_product_path(@product), class: "btn btn-primary" %>
 
@@ -39,8 +49,9 @@ Quantity:
 
 
 <br><br>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<% if current_user.try(:type) == 'AdminUser' %>
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+<% end %>
 <%= link_to 'Back', products_path %>
 
 

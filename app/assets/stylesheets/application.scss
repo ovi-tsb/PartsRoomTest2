@@ -1,0 +1,48 @@
+@import "bootstrap/scss/bootstrap";
+
+
+ 
+ 
+ .forth {
+   box-shadow: inset 0 0 20px rgba(191, 191, 191, 0.2), 0 0 30px black;
+   /*height: 100px;*/
+   width: 200px;
+   background: rgba(191, 191, 191, 0.3);
+   border-radius: 10px;
+   box-shadow: inset 0 0 10px rgba(191, 191, 191, 0.8), 0 0 10px rgba(191, 191, 191, 0.8);
+   padding: 0 0 20px 20px;
+   /*display: inline-block;*/
+   /*margin: 15px;*/
+   /*vertical-align: top;*/
+   /*text-align: center;*/
+ }
+
+.product-image img{
+   max-width: 500px;
+   border: 4px solid grey;
+}
+.navbar-nav li a{
+    /*border: 3px solid blue;*/
+    margin-left: 20px;
+}
+.nav-user-name{
+  color: #fff;
+}
+
+
+@media only screen and (max-width: 500px) {
+  /***************    Use input number mobile friendly ***********/
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  input[type="number"]::-webkit-inner-spin-button, 
+  input[type="number"]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+  /***************    Use input number mobile friendly ***********/
+}
+
+
+
+
