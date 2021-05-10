@@ -1,8 +1,12 @@
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">Our Logo</a>
-
+  <% if user_signed_in? %>
+    <!-- <a class="navbar-brand" href="#">Our Logo</a> -->
+    <%= link_to "Our Logo", products_path, class: 'navbar-brand' %>
+  <% else %>
+    <%= link_to "Our Logo", root_path, class: 'navbar-brand' %>
+  <% end %>
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -17,7 +21,9 @@
           <%= link_to "Login", new_user_session_path, class: "btn btn-outline-primary" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-success"  %>
+          <% if current_user.try(:type) == 'AdminUser' %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-success"  %>
+          <% end %>
         </li>
       <% else %>
         <% if current_user.try(:type) == 'AdminUser' %>

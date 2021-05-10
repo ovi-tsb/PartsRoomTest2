@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  
+  
+
   resources :use_parts
 
   get 'use_parts/index'
@@ -16,12 +18,21 @@ Rails.application.routes.draw do
       post :do_use
     end
   end
-  
-  root to: 'products#index'
 
 
+  # authenticated do
+  #   root :to => 'products#index'
+  # end
 
-  resources :products, path: "show"
+  get 'home/index'
+  devise_for :users
+
+  root to: 'home#index'
+   
+
+    
+
+  # resources :products, path: "show"
 
 
 end

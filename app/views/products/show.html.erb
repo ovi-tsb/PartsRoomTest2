@@ -10,31 +10,52 @@
 </p>
 <div class="card card-body bg-light">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-6">
       <div class="product-image">
         <% if @product.image.url %>
           <%= image_tag @product.image.url %>
         <% end %>
       </div>
     </div>
-    <div class="col-sm">
-      <%# product_url(@product) %>
-        <%# qrcode = RQRCode::QRCode.new(product_url(@product)) %>
-        <%# qrcode.as_svg(
-          offset: 0,
-          color: '000000',
-          module_size: 5,
-          standalone: true
-        ).html_safe %>
-        <%= QrCode.call(product_url(@product))%>
+    <div class="col-6">
+      <div class="row">
+        <div class="col-6">
+          <%# product_url(@product) %>
+            <%# qrcode = RQRCode::QRCode.new(product_url(@product)) %>
+            <%# qrcode.as_svg(
+              offset: 0,
+              color: '000000',
+              module_size: 5,
+              standalone: true
+            ).html_safe %>
+            <%= QrCode.call(product_url(@product))%>
+        </div>
+        <div class="col-6">
+          <h4 class="supplier">Supplier No:</h4>
+          <div class="supplier_number">
+            <% if @product.supplier_number %>
+              <%= @product.supplier_number.capitalize %>
+            <% else %>
+              <h6>N/A</h6>
+            <% end %>  
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 description card card-body bg-light">
+          <h4>Description:</h4>
+          <% if @product.description %>
+            <%= @product.description %>
+          <% end %>
+          
+        </div>
+      </div>
     </div>
-    <div class="col-sm">
-      <p>
-        Sure officially version says the cards are the new replacements for Bootstrap wells. But Cards are a quite broad Bootstrap components now. In simple terms, you can also use Bootstrap Jumbotron too.
-      </p>
-    </div>
-    
   </div>
+
+  
+    
+    
 </div>
 <br><br>
 <h4>
@@ -47,7 +68,7 @@ Inventory:
 <br>
 <br>
 
-
+<%= link_to 'View PDF', product_path(@product, format: "pdf"), class: "btn btn-xs btn-success" %>
 <br><br>
 <% if current_user.try(:type) == 'AdminUser' %>
   <%= link_to 'Edit', edit_product_path(@product) %> |

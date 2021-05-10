@@ -20,7 +20,12 @@ gem 'devise', '~> 4.2'
 # gem 'bootstrap', '~> 4.1.1'
 # gem 'jquery-rails'
 
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+
 gem 'bootsnap', '>= 1.4.4', require: false
+
+gem 'prawn', '~> 2.1'
+gem "prawn-labels"
 
 #################################
 

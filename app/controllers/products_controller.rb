@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   # before_action :set_product, only: [:show, :edit, :update, :destroy, :new_qty, :do_use, :use]
+  before_action :authenticate_user!
   before_action :set_product, only: %i[ show edit update destroy use do_use]
   
   # GET /products
@@ -13,6 +14,21 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        # logo = Rails.root + current_user.logo.url(:thumb).sub!(/\?.+\Z/, '')
+        # # logo at: [0,900], height: 161, width: 250
+        # pdf = InvoicePdf.new(@invoice, view_context)
+        pdf = Prawn::Document.new
+        pdf.text"Hello Ovi"
+        send_data pdf.render, filenamme: "product_#{@product.name}.pdf",
+                              # filename: "invoice_#{sprintf("%05d", @invoice.invoice_number)}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+
+      end
+    end
 
   end
 
@@ -88,7 +104,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:id, :name, :url, :qty, :image)
+      params.require(:product).permit(:id, :name, :url, :qty, :image, :description, :supplier_number)
     end
 
     
