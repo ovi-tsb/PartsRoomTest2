@@ -27,6 +27,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th><%= link_to "Print Label", class: "btn btn-primary" %></th>
       <th>Name</th>
       <th>Qty</th>
       <!-- <th>QR-Code</th> -->
@@ -39,6 +40,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.id %></td>
+        <td><%= check_box_tag 'products_ids[]', product.id %></td>
         <td><%= product.name %></td>
         <td><%= product.qty %></td>
         <!-- <td><%#= QrCode.call(product_url(product))%></td> -->
