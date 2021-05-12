@@ -95,6 +95,14 @@ class ProductsController < ApplicationController
    end
  end
 
+  def print_labels
+    selected_products = Product.where id: params[:products_ids]
+    labels = Prawn::Labels.render(selected_products, :type => "Avery5160") do |pdf, selected_product|
+      pdf.text selected_product.name
+    end
+
+    send_data labels, :filename => "labels.pdf"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

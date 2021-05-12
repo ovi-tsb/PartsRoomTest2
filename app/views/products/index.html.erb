@@ -37,10 +37,11 @@
   </thead>
 
   <tbody>
+    <%= form_with url: print_labels_products_url, local: true, method: :post do |form| %>
     <% @products.each do |product| %>
       <tr>
         <td><%= product.id %></td>
-        <td><%= check_box_tag 'products_ids[]', product.id %></td>
+        <td><%= form.check_box :products_ids, {multiple: true}, product.id %></td>
         <td><%= product.name %></td>
         <td><%= product.qty %></td>
         <!-- <td><%#= QrCode.call(product_url(product))%></td> -->
@@ -60,6 +61,12 @@
           </td>
         <% end %>
       </tr>
+    <% end %>
+    <tr>
+      <td>
+        <%= form.submit "Print labels", data: { disable_with: false } %>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
