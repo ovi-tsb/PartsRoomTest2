@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   # before_action :set_product, only: [:show, :edit, :update, :destroy, :new_qty, :do_use, :use]
   before_action :authenticate_user!
-  before_action :set_product, only: %i[ show edit update destroy use do_use]
+  before_action :set_product, only: %i[ show edit update destroy use do_use add add_product]
   
   # GET /products
   # GET /products.json
@@ -95,6 +95,7 @@ class ProductsController < ApplicationController
    end
  end
 
+# <<<<<<< Updated upstream
   def print_labels
     selected_products = Product.where id: params[:products_ids]
     labels = Prawn::Labels.render(selected_products, :type => "Avery5160") do |pdf, selected_product|
@@ -103,6 +104,21 @@ class ProductsController < ApplicationController
 
     send_data labels, :filename => "labels.pdf"
   end
+# =======
+ def add
+ end
+
+ def add_product
+   if @product.qty >= params[:qty].to_i
+    @product.update qty: @product.qty + params[:qty_add].to_i
+    redirect_to @product, notice: "Product was successfully updated."
+  else
+    @product.errors.add(:qty, "more than available quantity")
+    render :add
+  end
+ end
+
+# >>>>>>> Stashed changes
 
   private
     # Use callbacks to share common setup or constraints between actions.

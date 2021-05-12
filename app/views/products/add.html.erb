@@ -1,0 +1,30 @@
+<div class="card card-body bg-light">
+  <h4 class="max_qty">
+    Inventory: <%= @product.qty %>
+  </h4>
+  <br><br>
+
+  <%= form_with(url: add_product_product_path(@product),local: true) do |form| %>
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+        <h2>Error:</h2>
+
+        <ul>
+          <% @product.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= form.label :qty_add %>
+      <%= form.number_field :qty_add, value: params[:qty_add], min: '0', step: '1'  %>
+    </div>
+  <br><br>
+    <div class="actions">
+      <%# if @product.qty >= params[:qty].to_i  %>
+        <%= form.submit "Add", class: "btn btn-primary " %>
+      <%# end %>
+    </div>
+  <% end %>
+</div>

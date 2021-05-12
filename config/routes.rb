@@ -17,6 +17,11 @@ Rails.application.routes.draw do
       get :use
       post :do_use
     end
+
+    member do
+      get :add
+      post :add_product
+    end
     collection do
       post :print_labels
     end

@@ -10,14 +10,14 @@
 </p>
 <div class="card card-body bg-light">
   <div class="row">
-    <div class="col-6">
+    <div class="col-md-4 col-sm-12">
       <div class="product-image">
         <% if @product.image.url %>
-          <%= image_tag @product.image.url %>
+          <%= image_tag @product.image.url, class: "img-responsive" %>
         <% end %>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-md-8 col-sm-12">
       <div class="row">
         <div class="col-6">
           <%# product_url(@product) %>
@@ -62,6 +62,11 @@
 Inventory: 
 <%= @product.qty %>
 </h4>
+<% if current_user.try(:type) == 'AdminUser' %>
+  <%= link_to 'Add', add_product_path(@product), class: "btn btn-primary" %>
+<% end %>
+<br>
+<br>
 
 <%= link_to 'Use', use_product_path(@product), class: "btn btn-primary" %>
 
