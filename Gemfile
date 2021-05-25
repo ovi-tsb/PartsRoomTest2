@@ -26,6 +26,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'prawn', '~> 2.1'
 gem "prawn-labels"
+gem 'prawn-svg'
+gem 'chunky_png', '~> 1.3', '>= 1.3.5'
+
+gem 'administrate', '~> 0.16.0'
+gem 'bourbon'
 
 #################################
 

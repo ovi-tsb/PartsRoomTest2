@@ -5,30 +5,31 @@ class ProductsController < ApplicationController
   
   # GET /products
   # GET /products.json
+  helper_method :sort_column, :sort_direction
   def index
     # @products = Product.all
-    @products = Product.order(created_at: :desc).search(params[:search])
-    
+    @products = Product.order(sort_column + " " + sort_direction).search(params[:search])
+    # @products = Product.order(params[:sort])
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    respond_to do |format|
-      format.html
-      format.pdf do
+    # respond_to do |format|
+      # format.html
+      # format.pdf do
         # logo = Rails.root + current_user.logo.url(:thumb).sub!(/\?.+\Z/, '')
         # # logo at: [0,900], height: 161, width: 250
         # pdf = InvoicePdf.new(@invoice, view_context)
-        pdf = Prawn::Document.new
-        pdf.text"Hello Ovi"
-        send_data pdf.render, filenamme: "product_#{@product.name}.pdf",
+        # pdf = Prawn::Document.new
+        # pdf.text"Hello Ovi"
+        # send_data pdf.render, filenamme: "product_#{@product.name}.pdf",
                               # filename: "invoice_#{sprintf("%05d", @invoice.invoice_number)}.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
+                              # type: "application/pdf",
+                              # disposition: "inline"
 
-      end
-    end
+      # end
+    # end
 
   end
 
@@ -98,18 +99,35 @@ class ProductsController < ApplicationController
 # <<<<<<< Updated upstream
   def print_labels
     selected_products = Product.where id: params[:products_ids]
+############### Big QR #########################
+    # labels = Prawn::Labels.render(selected_products, :type => "Avery5160") do |pdf, selected_product|
+    #   pdf.svg QrCode.call(product_url(selected_product)), :at => [5,68], :width => 65, :height => 65, :align => :left # [5 is x and 70 is y]
+    #   pdf.draw_text selected_product.description.upcase.truncate(20),:style => :bold, :at => [75,55], :size => 10, overflow: :truncate
+    #   pdf.draw_text "Supp.#: " + selected_product.supplier_number, :at => [75,35], :size => 9
+    #   pdf.draw_text "Location: " + selected_product.supplier_number, :at => [75,15], :size => 9
+      
+    # end
+############### Big QR #########################
+############### Small QR #########################
     labels = Prawn::Labels.render(selected_products, :type => "Avery5160") do |pdf, selected_product|
-      pdf.text selected_product.name
+      pdf.draw_text selected_product.description.upcase.truncate(32),:style => :bold, :at => [15,55], :size => 10, overflow: :truncate
+      pdf.svg QrCode.call(product_url(selected_product)), :at => [15,50], :width => 45, :height => 45, :align => :left # [5 is x and 70 is y]
+      pdf.draw_text "Item.#: " + selected_product.item_no, :at => [75,40], :size => 9
+      pdf.draw_text "Location: " + selected_product.location, :at => [75,22], :size => 9
+      pdf.draw_text "Supp.#: " + selected_product.supplier_number, :at => [75,7], :size => 9
+      
     end
+############### Small QR #########################
 
-    send_data labels, :filename => "labels.pdf"
+
+    send_data labels, :filename => "labels.pdf", :type => "application/pdf"
   end
 # =======
  def add
  end
 
  def add_product
-   if @product.qty >= params[:qty].to_i
+  if @product.qty >= params[:qty].to_i
     @product.update qty: @product.qty + params[:qty_add].to_i
     redirect_to @product, notice: "Product was successfully updated."
   else
@@ -128,7 +146,16 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:id, :name, :url, :qty, :image, :description, :supplier_number)
+      params.require(:product).permit(:id, :name, :url, :qty, :image, :description, :supplier_number, 
+                                      :item_no, :location, :supplier_name, :status, :plant_id)
+    end
+
+    def sort_column
+      params[:sort] || "id"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
 
     

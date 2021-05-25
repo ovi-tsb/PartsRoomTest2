@@ -2,6 +2,16 @@ Rails.application.routes.draw do
   
   
 
+  namespace :admin do
+      resources :users
+      resources :admin_users
+      resources :super_users
+      resources :plants
+      resources :products
+      resources :use_parts
+
+      root to: "users#index"
+    end
   resources :use_parts
 
   get 'use_parts/index'

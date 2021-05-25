@@ -12,35 +12,58 @@
       </div>
     <% end %>
 
-    <div class="field">
-      <%= form.label :name %>
+    <!-- <div class="field"> -->
+      <%#= form.label :name %>
       <%#= content_tag :div, 'data-controller': 'scanner' do %>
         <%#= content_tag :canvas, nil, width: 350, height: 240, 'data-scanner-target': 'canvas' %>
-        <%= form.text_field :name, id: 'lolz', class: 'form-control ', 'data-scanner-target': 'output' %>
+        <%#= form.text_field :name, id: 'lolz', class: 'form-control ', 'data-scanner-target': 'output' %>
         <%#= form.label :url %>
         <%#= form.text_field :url, class: 'form-control' %>
         
       <%# end %>
-    </div>
+    <!-- </div> -->
     <div class="field">
       <%= form.label :description %><br>
-      <%= form.text_area :description %>
+      <%= form.text_field :description %>
+    </div>
+    <div class="field">
+      <%= form.label :item_no %><br>
+      <%= form.text_field :item_no %>
     </div>
 
     <div class="field">
       <%= form.label :quantity %><br>
       <%= form.text_field :qty %>
-      <br><br>
     </div>
 
     <div class="field">
       <%= form.label :supplier_number %><br>
       <%= form.text_field :supplier_number %>
     </div>
+    <div class="field">
+      <%= form.label :location %><br>
+      <%= form.text_field :location %>
+    </div>
+    <div class="field">
+      <%= form.label :supplier_name %><br>
+      <%= form.text_field :supplier_name %>
+    </div>
+    <div class="field">
+      <%= form.label :plant %><br>
+      <%= form.collection_select(:plant_id, Plant.all, :id, :name_for_select, prompt: true) %>
+    </div>
     
     <div class="field">
       <%= form.label :image %><br>
       <%= form.file_field :image, accept: "image/jpeg, image/jpg, image/gif, image/png", class: "glyphicon glyphicon-download-alt" %>
+    </div>
+    <div class="field">
+      <%= form.label :activ %>
+      <label class="switch">
+      <%= form.check_box :status,{}, "active", "obsolete" %>
+      <span class="slider round">
+      </span>
+      </label>
     </div>
     <br><br>
 

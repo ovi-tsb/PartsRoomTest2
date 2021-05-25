@@ -1,6 +1,11 @@
 class Product < ApplicationRecord
+
+	belongs_to :plant
+
 	after_create :generate_code
 	mount_uploader :image, ImageUploader
+
+	enum status: { active: 0, obsolete: 1}
 
 	def generate_code
 	  self.url = SecureRandom.hex
@@ -11,12 +16,9 @@ class Product < ApplicationRecord
 
 	def self.search(search)
 	  if search
-	    # find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-	    # where( "name LIKE ?", "%#{search}%")
-	    # where("id::text LIKE ?", "%#{search}%")
-	    # where("name LIKE ?", "%#{search}%")
-
-	    where('name ILIKE ? OR id::text LIKE ?', "%#{search}%", "%#{search}%")
+	    
+	    # where('description ILIKE ? OR id::text LIKE ?', "%#{search}%", "%#{search}%")
+	    where('description ILIKE ? OR item_no ILIKE? OR supplier_number ILIKE ? OR location ILIKE ? OR supplier_name ILIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
 
 	  else
 	    # find(:all)
