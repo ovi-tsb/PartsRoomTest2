@@ -18,6 +18,8 @@ class SuperUserDashboard < Administrate::BaseDashboard
     remember_created_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    password: Field::String.with_options(searchable: false),
+    password_confirmation: Field::String.with_options(searchable: false),
     type: Field::String,
     plant_id: Field::Number,
   }.freeze
@@ -41,10 +43,8 @@ class SuperUserDashboard < Administrate::BaseDashboard
     first_name
     last_name
     email
-    encrypted_password
-    reset_password_token
-    reset_password_sent_at
-    remember_created_at
+    password
+    password_confirmation
     created_at
     updated_at
     type
@@ -58,10 +58,8 @@ class SuperUserDashboard < Administrate::BaseDashboard
     first_name
     last_name
     email
-    encrypted_password
-    reset_password_token
-    reset_password_sent_at
-    remember_created_at
+    password
+    password_confirmation
     type
     plant_id
   ].freeze

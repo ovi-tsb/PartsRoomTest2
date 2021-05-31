@@ -36,6 +36,8 @@
 }
 .nav-user-name{
   color: #fff;
+  margin-top: 5px;
+  font-size: 1.2em;
 }
 .form-card{
   width: 50%;
@@ -90,6 +92,20 @@
 .sort-table a{
   color: grey;
 }
+
+table th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  background: white;
+  border: 1px #000 solid;
+  // background: #ededed;
+}
+table td { 
+  border: 1px #000 solid;
+ }
 
 .sort-table th .current {
   padding: 5px 25px 0 0 ;

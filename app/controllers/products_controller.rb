@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
     # @products = Product.all
-    @products = Product.order(sort_column + " " + sort_direction).search(params[:search])
+    @products = Product.where(plant_id: current_user.plant_id).order(sort_column + " " + sort_direction).search(params[:search]).paginate(page: params[:page], per_page: 3)
     # @products = Product.order(params[:sort])
   end
 

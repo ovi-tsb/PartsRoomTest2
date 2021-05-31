@@ -8,20 +8,20 @@ class ProductDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    plant: Field::BelongsTo,
-    id: Field::Number,
-    name: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-    url: Field::String,
-    qty: Field::Number,
-    image: Field::String,
-    description: Field::String,
-    supplier_number: Field::String,
-    item_no: Field::String,
-    location: Field::String,
-    supplier_name: Field::String,
-    status: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
+    plant: Field::BelongsTo.with_options(searchable: true),
+    id: Field::Number.with_options(searchable: true),
+    name: Field::String.with_options(searchable: true),
+    created_at: Field::DateTime.with_options(searchable: false),
+    updated_at: Field::DateTime.with_options(searchable: false),
+    url: Field::String.with_options(searchable: false),
+    qty: Field::Number.with_options(searchable: false),
+    image: Field::String.with_options(searchable: false),
+    description: Field::String.with_options(searchable: true),
+    supplier_number: Field::String.with_options(searchable: true),
+    item_no: Field::String.with_options(searchable: true),
+    location: Field::String.with_options(searchable: true),
+    supplier_name: Field::String.with_options(searchable: true),
+    status: Field::Select.with_options(searchable: true, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -33,6 +33,7 @@ class ProductDashboard < Administrate::BaseDashboard
     plant
     id
     name
+    qty
     created_at
   ].freeze
 

@@ -1,0 +1,31 @@
+<%#
+# Navigation
+
+This partial is used to display the navigation in Administrate.
+By default, the navigation contains navigation links
+for all resources in the admin dashboard,
+as defined by the routes in the `admin/` namespace
+%>
+
+<nav class="navigation" role="navigation">
+  <%= link_to(t("administrate.navigation.back_to_app"), products_path, class: "button button--alt button--nav") if defined?(products_path) %>
+
+  <%= link_to "User", admin_users_path, class: "navigation__link navigation__link}" 
+    %>
+  <%= link_to "Super User", admin_super_users_path, class: "navigation__link navigation__link}" if current_user  && current_user.try(:type) == 'SuperUser'
+      %>
+  <%= link_to "Admin User", admin_admin_users_path, class: "navigation__link navigation__link}" if current_user  && current_user.try(:type) == 'SuperUser'
+      %>
+  <%= link_to "Products", admin_products_path, class: "navigation__link navigation__link}"
+      %>
+  <%= link_to "Plants", admin_plants_path, class: "navigation__link navigation__link}"
+      %>
+
+  <%# Administrate::Namespace.new(namespace).resources_with_index_route.each do |resource| %>
+    <%#= link_to(
+      display_resource_name(resource),
+      resource_index_route(resource),
+      class: "navigation__link navigation__link--#{nav_link_state(resource)}"
+    ) if valid_action?(:index, resource) && show_action?(:index, model_from_resource(resource)) %>
+  <%# end %>
+</nav>

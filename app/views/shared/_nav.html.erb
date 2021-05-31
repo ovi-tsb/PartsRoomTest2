@@ -1,9 +1,11 @@
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
-  <% if user_signed_in? %>
+  <% if user_signed_in? && current_user.plant_id? %>
     <!-- <a class="navbar-brand" href="#">Our Logo</a> -->
-    <%= link_to "Our Logo", products_path, class: 'navbar-brand' %>
+   <!-- Plant.all.map do |plant| [plant.name.capitalize , plant.id]  -->
+
+    <%= link_to current_user.plant.name.capitalize, products_path, class: 'navbar-brand' %>
   <% else %>
     <%= link_to "Our Logo", root_path, class: 'navbar-brand' %>
   <% end %>
@@ -27,15 +29,21 @@
         </li>
       <% else %>
         <% if current_user.try(:type) == 'AdminUser' %>
-          <li style="color:red;">
-            <%= current_user.first_name.capitalize %>
+          <li class="nav-user-name" style="color:red;">
+            <%= current_user.first_name.capitalize + ' ' + current_user.last_name.capitalize %>
           </li>
         <% else %>
           <li class="nav-user-name">
-            <%= current_user.first_name.capitalize %>
+            <%= current_user.first_name.capitalize + ' ' + current_user.last_name.capitalize %>
           </li>  
         <% end %>
-        
+
+        <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %> 
+          <li class="nav-item">
+            <%= link_to "Admin Dashboard", admin_root_path, class: "btn btn-outline-info"%>
+          </li>
+        <% end %>
+
         <li class="nav-item">
           <%= link_to "Logout", destroy_user_session_path, method: :delete , class: "btn btn-outline-warning"%>
         </li>

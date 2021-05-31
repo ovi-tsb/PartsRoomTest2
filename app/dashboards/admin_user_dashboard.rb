@@ -9,17 +9,19 @@ class AdminUserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    first_name: Field::String,
-    last_name: Field::String,
-    email: Field::String,
-    encrypted_password: Field::String,
-    reset_password_token: Field::String,
-    reset_password_sent_at: Field::DateTime,
-    remember_created_at: Field::DateTime,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-    type: Field::String,
-    plant_id: Field::Number,
+    first_name: Field::String.with_options(searchable: true),
+    last_name: Field::String.with_options(searchable: true),
+    email: Field::String.with_options(searchable: true),
+    encrypted_password: Field::String.with_options(searchable: false),
+    reset_password_token: Field::String.with_options(searchable: false),
+    reset_password_sent_at: Field::DateTime.with_options(searchable: false),
+    password: Field::String.with_options(searchable: false),
+    password_confirmation: Field::String.with_options(searchable: false),
+    remember_created_at: Field::DateTime.with_options(searchable: false),
+    created_at: Field::DateTime.with_options(searchable: false),
+    updated_at: Field::DateTime.with_options(searchable: false),
+    type: Field::String.with_options(searchable: false),
+    plant_id: Field::Select.with_options(collection: Plant.all.map do |plant| [plant.name.capitalize + " - ID:  #{plant.id}", plant.id] end, searchable: true),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -41,10 +43,6 @@ class AdminUserDashboard < Administrate::BaseDashboard
     first_name
     last_name
     email
-    encrypted_password
-    reset_password_token
-    reset_password_sent_at
-    remember_created_at
     created_at
     updated_at
     type
@@ -58,11 +56,8 @@ class AdminUserDashboard < Administrate::BaseDashboard
     first_name
     last_name
     email
-    encrypted_password
-    reset_password_token
-    reset_password_sent_at
-    remember_created_at
-    type
+    password
+    password_confirmation
     plant_id
   ].freeze
 
