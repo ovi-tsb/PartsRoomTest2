@@ -212,6 +212,9 @@ input:checked + .slider:before {
   // border: 1px solid red;
   width:100%;
 }
+.new_product{
+  margin: 10px 0px;
+}
 
 
 /*/////////////////////////////////////////////
@@ -263,6 +266,9 @@ input:checked + .slider:before {
  }
   .custom-class { 
     width: 100%; display:block; 
+  }
+  #search{
+    width: 100%;
   }
 
 
