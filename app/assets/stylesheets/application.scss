@@ -265,9 +265,19 @@ input:checked + .slider:before {
   margin: 0 auto;
  }
   .custom-class { 
-    width: 100%; display:block; 
+    width: 100%; 
+    display:block; 
+  }
+  .custom-login{
+    // width: 100%; 
+    // display:block;
+    margin: 20px 0px; 
+    // border: 5px solid red;
   }
   #search{
+    width: 100%;
+  }
+  .form-card{
     width: 100%;
   }
 
