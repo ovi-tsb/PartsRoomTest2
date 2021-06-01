@@ -8,8 +8,12 @@ class ProductsController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
     # @products = Product.all
-    @products = Product.where(plant_id: current_user.plant_id).order(sort_column + " " + sort_direction).search(params[:search]).paginate(page: params[:page], per_page: 3)
+    if current_user.try(:type) == 'SuperUser'
+      @products = Product.order(sort_column + " " + sort_direction).search(params[:search]).paginate(page: params[:page], per_page: 3)
+    elsif 
+      @products = Product.where(plant_id: current_user.plant_id).order(sort_column + " " + sort_direction).search(params[:search]).paginate(page: params[:page], per_page: 3)
     # @products = Product.order(params[:sort])
+  end
   end
 
   # GET /products/1
@@ -88,12 +92,12 @@ class ProductsController < ApplicationController
 
  def do_use
     if @product.qty >= params[:qty].to_i
-     @product.update qty: @product.qty - params[:qty].to_i
+      @product.update qty: @product.qty - params[:qty].to_i
      redirect_to @product, notice: "Product was successfully updated."
-   else
-     @product.errors.add(:qty, "more than available quantity")
+    else
+      @product.errors.add(:qty, "more than available quantity")
      render :use
-   end
+    end
  end
 
 # <<<<<<< Updated upstream

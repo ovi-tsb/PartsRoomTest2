@@ -32,7 +32,7 @@ class ProductDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     plant
     id
-    name
+    description
     qty
     created_at
   ].freeze
@@ -42,7 +42,6 @@ class ProductDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     plant
     id
-    name
     created_at
     updated_at
     url
@@ -61,7 +60,6 @@ class ProductDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     plant
-    name
     url
     qty
     image

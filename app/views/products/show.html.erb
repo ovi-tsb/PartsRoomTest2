@@ -1,27 +1,33 @@
 <h3>
   <strong>Name:</strong>
-  <%= @product.description.capitalize %>
+  <u>
+    <%= @product.description.capitalize %>
+  </u>
 </h3>
-<p>
-  <strong>Item #:</strong>
-  <%= @product.item_no %>
-  <br>
-  <strong>Part ID:</strong>
-  <%= @product.id %>
-</p>
+<h4>
+  Inventory: 
+  <%= @product.qty %>
+</h4>
 
 <div class="card card-body bg-light">
-  <h4>
-    Inventory: 
-    <%= @product.qty %>
-  </h4>
 
   <div class="row">
     <div class="col-12 col-md-8">
       <div class="row">
         <div class="col-8">
           <div class="card card-body bg-light ">
-            <h6 class="prod-details">Supplier No:
+            <h6 class="prod-details">Item #:
+              <span>
+                <% if @product.item_no? %>
+                  <%= @product.item_no.capitalize %>
+                <% else %>
+                  <h6>N/A</h6>
+                <% end %>
+              </span>
+            </h6>
+          </div>
+          <div class="card card-body bg-light ">
+            <h6 class="prod-details">Supplier #:
               <span>
                 <% if @product.supplier_number? %>
                   <%= @product.supplier_number.capitalize %>
@@ -53,31 +59,11 @@
               </span>
             </h6>
           </div>
-          <div class="card card-body bg-light prod-details">
-            <h6 class="prod-details">Item No:
-              <span>
-                <% if @product.item_no? %>
-                  <%= @product.item_no.capitalize %>
-                <% else %>
-                  <h6>N/A</h6>
-                <% end %>
-              </span>
-            </h6>
-          </div>
           
         </div>
         <div class="col-4">
-          <%# product_url(@product) %>
-            <%# qrcode = RQRCode::QRCode.new(product_url(@product)) %>
-            <%# qrcode.as_svg(
-              offset: 0,
-              color: '000000',
-              module_size: 5,
-              standalone: true
-            ).html_safe %>
-            <%= QrCode.call(product_url(@product))%>
+          <%= QrCode.call(product_url(@product))%>
         </div>
-        
       </div>
       
     </div>
@@ -89,30 +75,26 @@
       </div>
     </div>
   </div>
-
-  
-    
-    
 </div>
 
   <div class="row show-buttons">
-    <div class="col-12 col-md1 col-sm-1">
-      <%= link_to 'Use', use_product_path(@product), class: "btn btn-primary" %>
+    <div class="col-md-3">
+      <%= link_to 'Use', use_product_path(@product), class: "btn btn-danger btn-block" %>
     </div>
-    <div class="col-12 col-md10 col-sm-10">
+    <div class="col-md-6">
     </div>
-    <div class="col-12 col-md-1 col-sm-1">
-      <% if current_user.try(:type) == 'AdminUser' %>
-        <%= link_to 'Add', add_product_path(@product), class: "btn btn-primary" %>
+    <div class="col-md-3">
+      <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
+        <%= link_to 'Add', add_product_path(@product), class: "btn btn-primary btn-block" %>
       <% end %>
     </div>
   </div>
 
 
 <% if current_user.try(:type) == 'AdminUser' %>
-  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Edit', edit_product_path(@product), class: "back-buttons" %> |
 <% end %>
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back', products_path, class: "back-buttons" %>
 
 
 

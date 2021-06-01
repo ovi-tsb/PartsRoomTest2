@@ -32,6 +32,10 @@
           <li class="nav-user-name" style="color:red;">
             <%= current_user.first_name.capitalize + ' ' + current_user.last_name.capitalize %>
           </li>
+        <% elsif  current_user.try(:type) == 'SuperUser' %>
+          <li class="nav-user-name" style="color:green;">
+            <%= current_user.first_name.capitalize + ' ' + current_user.last_name.capitalize %>
+          </li>
         <% else %>
           <li class="nav-user-name">
             <%= current_user.first_name.capitalize + ' ' + current_user.last_name.capitalize %>
@@ -40,12 +44,12 @@
 
         <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %> 
           <li class="nav-item">
-            <%= link_to "Admin Dashboard", admin_root_path, class: "btn btn-outline-info"%>
+            <%= link_to "Admin Dashboard", admin_root_path, class: "btn btn-outline-info nav-buttons btn-block"%>
           </li>
         <% end %>
 
         <li class="nav-item">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete , class: "btn btn-outline-warning"%>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete , class: "btn btn-outline-warning nav-buttons btn-block"%>
         </li>
       <% end %>
     </ul>

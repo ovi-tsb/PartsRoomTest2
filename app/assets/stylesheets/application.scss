@@ -92,17 +92,21 @@
 .sort-table a{
   color: grey;
 }
-
-table th {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
-  z-index: 10;
-  background: white;
-  border: 1px #000 solid;
-  // background: #ededed;
+.table-responsive {
+  overflow-x: auto;
 }
+table {
+  display: block;
+ }
+table th{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    border: 1px #000 solid;
+    background-color: #fff;
+  }
 table td { 
   border: 1px #000 solid;
  }
@@ -204,6 +208,7 @@ input:checked + .slider:before {
   min-height: 500px;
 }
 
+
 /*/////////////////////////////////////////////
 ///////////////////////////////////////////////*/
 
@@ -221,6 +226,37 @@ input:checked + .slider:before {
     -webkit-appearance: none; 
     margin: 0; 
   }
+  .hide-content{
+    display: none;
+  }
+  .product-image {
+    margin-top: 20px;
+  }
+  .btn-block{
+    margin-top: 15px;
+  }
+  .back-buttons{
+    font-size: 1.2em;
+  }
+  .nav-buttons{
+    float: right;
+    margin: 10px 0px;
+  }
+  .nav-user-name{
+    text-align: center;
+  }
+  .navbar-collapse{
+    border-top: 1px solid #7c7b7b;
+    margin-top: 5px;
+  }
+  .min-height{
+    padding: 10px ;
+  }
+
+
+
+
+
   /***************    Use input number mobile friendly ***********/
 }
 
@@ -230,7 +266,28 @@ input:checked + .slider:before {
 
   .product-image img{
     margin-bottom: 20px;
-}
+  }
+  .product-image {
+    margin-top: 20px;
+  }
+  .btn-block{
+    margin-top: 15px;
+  }
+  .back-buttons{
+    font-size: 1.2em;
+  }
+  .nav-buttons{
+    float: right;
+    margin: 10px 0px;
+  }
+  .nav-user-name{
+    text-align: center;
+  }
+  .navbar-collapse{
+    border-top: 1px solid #7c7b7b;
+    margin-top: 5px;
+  }
+
 }
 /*////////////////////////////////////////////////////////////////////////////////////////////*/
 

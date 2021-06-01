@@ -24,23 +24,24 @@
     <%= form_with url: print_labels_products_url, local: true, method: :post do |form| %>
     <thead>
       <tr class="sort-table">
-        <th>ID</th>
-        <% if current_user.try(:type) == 'AdminUser' %>
-          <th>
+        <th class="hide-content">ID</th>
+        <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
+          <th class="hide-content">
             <input type="checkbox" id="selectAll" value="selectAll">
             <%= form.submit "Labels", data: { disable_with: false } %>
           </th>
         <% end %>
         <th><%= sortable "item_no", "Item #" %></th>
         <th><%= sortable "description" %></th>
-        <th><%= sortable "supplier_number", "Supplier #" %></th>
+        <th class="hide-content"><%= sortable "supplier_number", "Supplier #" %></th>
         <th><%= sortable "qty" %></th>
-        <th><%= sortable "location" %></th>
-        <th><%= sortable "supplier_name" %></th>
+        <th class="hide-content"><%= sortable "location" %></th>
+        <th class="hide-content"><%= sortable "supplier_name" %></th>
         <th><%= sortable "status" %></th>
         <!-- <th>QR-Code</th> -->
-        <th colspan="2"></th>
-
+        <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
+          <th class="hide-content" colspan="2"></th>
+        <% end %>  
       </tr>
     </thead>
   <!---------------- check all checkboxes --------------->
@@ -64,26 +65,26 @@
       <% @products.each do |product| %>
         <% if product.status == "active" %>
           <tr>
-            <td><%= product.id %></td>
-            <% if current_user.try(:type) == 'AdminUser' %>
-              <td><%= form.check_box :products_ids, {multiple: true}, product.id %></td>
+            <td class="hide-content"><%= product.id %></td>
+            <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
+              <td class="hide-content"><%= form.check_box :products_ids, {multiple: true}, product.id %></td>
             <% end %>
             <td><%=  link_to truncate(product.item_no.truncate(22)).html_safe, product %></td>
             <td><%= link_to truncate(product.description.truncate(22)).capitalize.html_safe, product %></td>
-            <td><%= product.supplier_number %></td>
+            <td class="hide-content"><%= product.supplier_number %></td>
             <td><%= product.qty %></td>
-            <td><%= product.location %></td>
-            <td><%= product.supplier_name %></td>
+            <td class="hide-content"><%= product.location %></td>
+            <td class="hide-content"><%= product.supplier_name %></td>
             <!-- <td><%#= QrCode.call(product_url(product))%></td> -->
-            <% if current_user.try(:type) != 'AdminUser' %>
+            <% if current_user.try(:type) != 'AdminUser' && current_user.try(:type) != 'SuperUser' %>
               <td><%= link_to 'Use', use_product_path(product), class: "btn btn-primary" %></td>
             <% end %>
             <!-- <td>
               <%#= link_to 'Show', product %>
             </td> -->
-            <% if current_user.try(:type) == 'AdminUser' %>
+            <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
 
-              <td>
+              <td class="hide-content">
                 <%= link_to edit_product_path(product) do%>
                   <i class="fa fa-edit" width="50px" height="50px"></i>  
                 <% end %>
@@ -97,27 +98,35 @@
        <% else %>
         
           <tr style="background-color: #ffa791;">
-            <td><%= product.id %></td>
-            
-              <td></td>
-            
-            <td><%=  link_to truncate(product.item_no.truncate(22)).html_safe, product %></td>
-            <td><%= link_to truncate(product.description.truncate(22)).capitalize.html_safe, product %></td>
-            <td><%= product.supplier_number %></td>
-            <td><%= product.qty %></td>
-            <td><%= product.location %></td>
-            <td><%= product.supplier_name %></td>
-            <!-- <td><%#= QrCode.call(product_url(product))%></td> -->
-            <% if current_user.try(:type) != 'AdminUser' %>
-              <td><%= link_to 'Use', use_product_path(product), class: "btn btn-primary" %></td>
+            <td class="hide-content"><%= product.id %></td>
+            <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser'  %>
+              <td class="hide-content"></td>
+            <% else %> 
+
             <% end %>
+            <td><%= link_to truncate(product.item_no.truncate(22)).html_safe, product %></td>
+            <td><%= link_to truncate(product.description.truncate(22)).capitalize.html_safe, product %></td>
+            <td class="hide-content"><%= product.supplier_number %></td>
+            <td><%= product.qty %></td>
+            <td class="hide-content"><%= product.location %></td>
+            <td class="hide-content"><%= product.supplier_name %></td>
+            <!-- <td><%#= QrCode.call(product_url(product))%></td> -->
+            <%# if current_user.try(:type) != 'AdminUser' || current_user.try(:type) != 'SuperUser' %>
+            
+            <% if current_user.try(:type) != 'AdminUser' && current_user.try(:type) != 'SuperUser' %>  
+              <td class="hide-content">
+                <%= link_to 'Use', use_product_path(product), class: "btn btn-primary" %>
+              </td>
+            <% elsif current_user.try(:type) == 'SuperUser'  %>
+              <th class="hide-content" colspan="2"></th>
+            <% end %> 
             <!-- <td>
               <%#= link_to 'Show', product %>
             </td> -->
             <% if current_user.try(:type) == 'AdminUser' %>
 
-              <td>
-                <%= link_to edit_product_path(product) do%>
+              <td class="hide-content">
+                <%= link_to edit_product_path(product) do %>
                   <i class="fa fa-edit" width="50px" height="50px"></i>  
                 <% end %>
               </td>
@@ -128,6 +137,7 @@
           </tr>
         <% end %>
       <% end %>
+
         <!-- <tr>
           <td>
             <%#= form.submit "Print labels", data: { disable_with: false } %>
