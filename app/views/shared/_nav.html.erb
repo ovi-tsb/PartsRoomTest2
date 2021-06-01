@@ -44,12 +44,12 @@
 
         <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %> 
           <li class="nav-item">
-            <%= link_to "Admin Dashboard", admin_root_path, class: "btn btn-outline-info nav-buttons btn-block"%>
+            <%= link_to "Admin Dashboard", admin_root_path, class: "btn btn-outline-info nav-buttons custom-class"%>
           </li>
         <% end %>
 
         <li class="nav-item">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete , class: "btn btn-outline-warning nav-buttons btn-block"%>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete , class: "btn btn-outline-warning nav-buttons custom-class"%>
         </li>
       <% end %>
     </ul>

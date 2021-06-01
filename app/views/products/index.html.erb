@@ -118,7 +118,7 @@
                 <%= link_to 'Use', use_product_path(product), class: "btn btn-primary" %>
               </td>
             <% elsif current_user.try(:type) == 'SuperUser'  %>
-              <th class="hide-content" colspan="2"></th>
+              <td class="hide-content" colspan="2"></td>
             <% end %> 
             <!-- <td>
               <%#= link_to 'Show', product %>

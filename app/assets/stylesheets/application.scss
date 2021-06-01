@@ -39,6 +39,7 @@
   margin-top: 5px;
   font-size: 1.2em;
 }
+
 .form-card{
   width: 50%;
   margin: 0 auto;
@@ -252,6 +253,9 @@ input:checked + .slider:before {
   .min-height{
     padding: 10px ;
   }
+  .custom-class { 
+    width: 100%; display:block; 
+  }
 
 
 
@@ -286,6 +290,9 @@ input:checked + .slider:before {
   .navbar-collapse{
     border-top: 1px solid #7c7b7b;
     margin-top: 5px;
+  }
+  .custom-class { 
+    width: 100%; display:block; 
   }
 
 }
