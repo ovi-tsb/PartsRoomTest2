@@ -3,21 +3,21 @@
 
 <!-- <p id="notice"><%#= notice %></p> -->
 <div class="min-height">
-  <h1>Parts</h1>
+  <h1 class="top-mobile-screen">Parts</h1>
   <span>
     <%= form_tag products_path, :method => 'get' do %>
       <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-3">
+        <div class="col-sm-12 col-xs-12 col-md-3 col-lg-2">
           <%= text_field_tag :search, params[:search], id: 'search' %>
         </div>
-        <div class="col-sm-12 col-xs-12 col-md-7">  
+        <div class="col-sm-12 col-xs-12 col-md-7 col-lg-4">  
           <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-5">
-              <%= submit_tag "Search", :name => nil, class: "btn btn-warning btn-custom-class" %>
+            <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3">
+              <%= submit_tag "Search", :name => nil, class: "btn btn-primary btn-custom-class" %>
             </div>
             
-            <div class="col-xs-6 col-sm-6 col-md-5">
-              <%= button_tag 'CLEAR', id: 'clear_form_button', class: "btn btn-primary btn-custom-class" %>
+            <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3">
+              <%= button_tag 'CLEAR', id: 'clear_form_button', class: "btn btn-warning btn-custom-class" %>
             </div>
           </div> 
         </div>
@@ -75,11 +75,21 @@
     <tbody>
       
       <% @products.each do |product| %>
-        <% if product.status == "active" %>
+        <%# if product.status == "active" %>
+        <% if !product.image? %>
+          <tr class="no_mage_table_color">
+        <% elsif product.status != "active" %>
+          <tr style="background-color: #ffa791;" >
+        <% else %>
           <tr>
+        <% end %>
             <td class="hide-content hide-medium"><%= product.id %></td>
             <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
-              <td class="hide-content"><%= form.check_box :products_ids, {multiple: true}, product.id %></td>
+              <td>
+                <% if product.status == "active" %>
+                  <%= form.check_box :products_ids, {multiple: true}, product.id %>
+                <% end %>    
+              </td>
             <% end %>
             <td><%=  link_to truncate(product.item_no.truncate(22)).html_safe, product %></td>
             <td><%= link_to truncate(product.description.truncate(22)).capitalize.html_safe, product %></td>
@@ -106,55 +116,8 @@
               </td>
             <% end %>
           </tr>
-        
-       <% else %>
-        
-          <tr style="background-color: #ffa791;">
-            <td class="hide-content hide-medium"><%= product.id %></td>
-            <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser'  %>
-              <td class="hide-content"></td>
-            <% else %> 
-
-            <% end %>
-            <td><%= link_to truncate(product.item_no.truncate(22)).html_safe, product %></td>
-            <td><%= link_to truncate(product.description.truncate(22)).capitalize.html_safe, product %></td>
-            <td class="hide-content"><%= product.supplier_number %></td>
-            <td><%= product.qty %></td>
-            <td class="hide-content"><%= product.location %></td>
-            <td class="hide-content hide-medium"><%= product.supplier_name %></td>
-            <!-- <td><%#= QrCode.call(product_url(product))%></td> -->
-            <%# if current_user.try(:type) != 'AdminUser' || current_user.try(:type) != 'SuperUser' %>
-            
-            <% if current_user.try(:type) != 'AdminUser' && current_user.try(:type) != 'SuperUser' %>  
-              <td class="hide-content">
-                <%= link_to 'Use', use_product_path(product), class: "btn btn-primary" %>
-              </td>
-            <% elsif current_user.try(:type) == 'SuperUser'  %>
-              <td class="hide-content" colspan="2"></td>
-            <% end %> 
-            <!-- <td>
-              <%#= link_to 'Show', product %>
-            </td> -->
-            <% if current_user.try(:type) == 'AdminUser' %>
-
-              <td class="hide-content">
-                <%= link_to edit_product_path(product) do %>
-                  <i class="fa fa-edit" width="50px" height="50px"></i>  
-                <% end %>
-              </td>
-              <td>
-                <%= link_to "Delete", product, method: :delete, data: { confirm: 'Are you sure you want to delete record?' }, class: "btn btn-danger btn-sm"%>
-              </td>
-            <% end %>
-          </tr>
         <% end %>
-      <% end %>
 
-        <!-- <tr>
-          <td>
-            <%#= form.submit "Print labels", data: { disable_with: false } %>
-          </td>
-        </tr> -->
       <% end %>
     </tbody>
   </table>

@@ -1,100 +1,110 @@
-<h3>
-  <strong>Name:</strong>
-  <u>
-    <%= @product.description.capitalize %>
-  </u>
-</h3>
-<h4 class="inventory">
-  Inventory: 
-  <%= @product.qty %>
-</h4>
+<div class="min-height">
+  <h3 class="top-mobile-screen">
+    <strong>Name:</strong>
+    <u>
+      <%= @product.description.capitalize %>
+    </u>
+  </h3>
+  <h4 class="inventory">
+    Inventory: 
+    <%= @product.qty %>
+  </h4>
 
-<div class="card card-body bg-light">
+<% if @product.status == "active" %>
+  <div class="card card-body bg-light">
+<% else %>
+  <div class="card card-body " style="background-color: #ffa791;">
+<% end %>
+  
 
-  <div class="row">
-    <div class="col-12 col-md-8">
-      <div class="row">
-        <div class="col-8">
-          <div class="card card-body bg-light ">
-            <h6 class="prod-details">Item #:
-              <span>
-                <% if @product.item_no? %>
-                  <%= @product.item_no.capitalize %>
-                <% else %>
-                  <h6>N/A</h6>
-                <% end %>
-              </span>
-            </h6>
+    <div class="row">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="row">
+          <div class="col-sm-12 col-xs-12 col-lg-9">
+            <div class="card card-body bg-light ">
+              <h6 class="prod-details">Item #:
+                <span>
+                  <% if @product.item_no? %>
+                    <%= @product.item_no.capitalize %>
+                  <% else %>
+                    <h6>N/A</h6>
+                  <% end %>
+                </span>
+              </h6>
+            </div>
+            <div class="card card-body bg-light prod-details ">
+              <h6 class="prod-details">Supplier #:
+                <span>
+                  <% if @product.supplier_number? %>
+                    <%= @product.supplier_number.capitalize %>
+                  <% else %>
+                    <h6>N/A</h6>
+                  <% end %>
+                </span>
+              </h6>
+            </div>
+            <div class="card card-body bg-light prod-details">
+              <h6 class="prod-details">Supplier Name:
+                <span>
+                  <% if @product.supplier_name? %>
+                    <%= @product.supplier_name.capitalize %>
+                  <% else %>
+                    <h6>N/A</h6>
+                  <% end %> 
+                </span>
+              </h6>
+            </div>
+            <div class="card card-body bg-light prod-details">
+              <h6 class="prod-details">Location:
+                <span>
+                  <% if @product.location? %>
+                    <%= @product.location.capitalize %>
+                  <% else %>
+                    <h6>N/A</h6>
+                  <% end %>
+                </span>
+              </h6>
+            </div>
+            
           </div>
-          <div class="card card-body bg-light ">
-            <h6 class="prod-details">Supplier #:
-              <span>
-                <% if @product.supplier_number? %>
-                  <%= @product.supplier_number.capitalize %>
-                <% else %>
-                  <h6>N/A</h6>
-                <% end %>
-              </span>
-            </h6>
+          <div class="col-sm-12 col-xs-12 col-lg-3">
+            <%= QrCode.call(product_url(@product))%>
           </div>
-          <div class="card card-body bg-light prod-details">
-            <h6 class="prod-details">Supplier Name:
-              <span>
-                <% if @product.supplier_name? %>
-                  <%= @product.supplier_name.capitalize %>
-                <% else %>
-                  <h6>N/A</h6>
-                <% end %> 
-              </span>
-            </h6>
-          </div>
-          <div class="card card-body bg-light prod-details">
-            <h6 class="prod-details">Location:
-              <span>
-                <% if @product.location? %>
-                  <%= @product.location.capitalize %>
-                <% else %>
-                  <h6>N/A</h6>
-                <% end %>
-              </span>
-            </h6>
-          </div>
-          
         </div>
-        <div class="col-4">
-          <%= QrCode.call(product_url(@product))%>
+        
+      </div>
+      <div class="col-12 col-md-4 col-sm-12 col-lg-6">
+        <div class="product-image">
+          <% if @product.image.url %>
+            <%= image_tag(@product.image.url, class: "img-responsive") %>
+          <% else %>
+            <div class="no-image">No image available...</div>
+          <% end %>
         </div>
       </div>
-      
     </div>
-    <div class="col-12 col-md-4 col-sm-12">
-      <div class="product-image">
-        <% if @product.image.url %>
-          <%= image_tag(@product.image.url, class: "img-responsive") %>
+  </div>
+
+    <div class="row show-buttons">
+      <div class="col-md-3">
+        <%= link_to 'Use', use_product_path(@product), class: "btn btn-danger btn-block" %>
+      </div>
+      <div class="col-md-6">
+      </div>
+      <div class="col-md-3">
+        <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
+          <%= link_to 'Add', add_product_path(@product), class: "btn btn-primary btn-block" %>
         <% end %>
       </div>
     </div>
-  </div>
-</div>
 
-  <div class="row show-buttons">
-    <div class="col-md-3">
-      <%= link_to 'Use', use_product_path(@product), class: "btn btn-danger btn-block" %>
-    </div>
-    <div class="col-md-6">
-    </div>
-    <div class="col-md-3">
-      <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
-        <%= link_to 'Add', add_product_path(@product), class: "btn btn-primary btn-block" %>
-      <% end %>
-    </div>
+  <div class="back-buttons">
+    <% if current_user.try(:type) == 'AdminUser' %>
+      <%= link_to 'Edit', edit_product_path(@product) %>  | 
+    <% end %>
+    <%= link_to 'Back', products_path %>
   </div>
 
-<div class="back-buttons">
-  <% if current_user.try(:type) == 'AdminUser' %>
-    <%= link_to 'Edit', edit_product_path(@product) %>  | 
-  <% end %>
-  <%= link_to 'Back', products_path %>
 </div>
 
 

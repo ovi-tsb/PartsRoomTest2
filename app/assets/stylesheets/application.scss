@@ -218,6 +218,23 @@ input:checked + .slider:before {
 .inventory{
   color: #c90000;
 }
+.no-image{
+  width: 200px;
+  height:200px;
+  text-align: center;
+  padding-top: 90px;
+  border: 1px solid grey;
+  -webkit-box-shadow: 5px 15px 16px -1px rgba(0,0,0,0.73); 
+  box-shadow: 5px 15px 16px -1px rgba(0,0,0,0.73);
+}
+.no_mage_table_color{
+  background-color: #b9b3fc;
+}
+.hide-check-box{
+  visibility: hidden !important;
+  background-color: #ffa791 !important;
+}
+
 
 
 /*/////////////////////////////////////////////
@@ -270,11 +287,17 @@ input:checked + .slider:before {
     margin-top: 5px;
   }
   .min-height{
-    padding: 10px ;
+    padding: 10px;
+    width: 100%;
+    // border: 1px solid red;
+  }
+  .container-fluid{
+    padding: 0px !important;
   }
   table {
   // display: block;
   margin: 0 auto;
+  font-size: 0.77em;
  }
   .btn-custom-class { 
     width: 100%; 
@@ -292,12 +315,31 @@ input:checked + .slider:before {
   .form-card{
     width: 100%;
   }
+  .top-mobile-screen{
+    margin-top: -40px;
+  }
 
 
 
 
 
   /***************    Use input number mobile friendly ***********/
+}
+/***************    Iphone 6/7/8 plus  ***********/
+@media only screen and (min-width: 400px) and (max-width: 499px) {
+  table {
+  // display: block;
+  margin: 0 auto;
+  font-size: 1.05em;
+ }
+}
+/***************    Iphone 6/7/8   ***********/
+@media only screen and (min-width: 364px) and (max-width: 399px) {
+  table {
+  // display: block;
+  margin: 0 auto;
+  font-size: 0.85em;
+ }
 }
 
 /*////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -337,6 +379,12 @@ input:checked + .slider:before {
   .form-card{
     width: 100%;
   }
+  .btn-block{
+    margin-bottom: 15px;
+  }
+  .top-mobile-screen{
+    margin-top: -30px;
+  }
   
 
 }
@@ -345,7 +393,8 @@ input:checked + .slider:before {
 @media only screen and (min-width: 768px) and (max-width: 990px) {
 
   .min-height{
-    padding: 0px;width: 100%;
+    padding: 0px;
+    width: 100%;
     overflow-x: auto;
   }
   .hide-medium{
