@@ -215,6 +215,9 @@ input:checked + .slider:before {
 .new_product{
   margin: 10px 0px;
 }
+.inventory{
+  color: #c90000;
+}
 
 
 /*/////////////////////////////////////////////
@@ -240,11 +243,20 @@ input:checked + .slider:before {
   .product-image {
     margin-top: 20px;
   }
+  .custom-class { 
+    width: 100%; 
+    display:block;
+    margin-top: 15px; 
+  }
   .btn-block{
     margin-top: 15px;
   }
   .back-buttons{
-    font-size: 1.2em;
+    font-size: 1.6em;
+    margin-top: 20px;
+  }
+  .back-buttons a{
+    margin: 10px;
   }
   .nav-buttons{
     float: right;
@@ -264,7 +276,7 @@ input:checked + .slider:before {
   // display: block;
   margin: 0 auto;
  }
-  .custom-class { 
+  .btn-custom-class { 
     width: 100%; 
     display:block; 
   }
@@ -298,11 +310,15 @@ input:checked + .slider:before {
   .product-image {
     margin-top: 20px;
   }
-  .btn-block{
-    margin-top: 15px;
+  .btn-custom-class { 
+    width: 100%; 
+    display:block;
+    margin-top: 15px; 
   }
+  
   .back-buttons{
     font-size: 1.2em;
+    margin-top: 20px;
   }
   .nav-buttons{
     float: right;
@@ -318,8 +334,29 @@ input:checked + .slider:before {
   .custom-class { 
     width: 100%; display:block; 
   }
+  .form-card{
+    width: 100%;
+  }
+  
 
 }
 /*////////////////////////////////////////////////////////////////////////////////////////////*/
 
+@media only screen and (min-width: 768px) and (max-width: 990px) {
 
+  .min-height{
+    padding: 0px;width: 100%;
+    overflow-x: auto;
+  }
+  .hide-medium{
+    display: none;
+  }
+  .btn-custom-class { 
+    width: 50%; 
+    margin-top: -5px;
+  }
+  .new_product{
+    margin-top: -20px;
+  }
+
+}

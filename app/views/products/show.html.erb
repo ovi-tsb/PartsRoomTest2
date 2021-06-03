@@ -4,7 +4,7 @@
     <%= @product.description.capitalize %>
   </u>
 </h3>
-<h4>
+<h4 class="inventory">
   Inventory: 
   <%= @product.qty %>
 </h4>
@@ -90,11 +90,13 @@
     </div>
   </div>
 
+<div class="back-buttons">
+  <% if current_user.try(:type) == 'AdminUser' %>
+    <%= link_to 'Edit', edit_product_path(@product) %>  | 
+  <% end %>
+  <%= link_to 'Back', products_path %>
+</div>
 
-<% if current_user.try(:type) == 'AdminUser' %>
-  <%= link_to 'Edit', edit_product_path(@product), class: "back-buttons" %> |
-<% end %>
-<%= link_to 'Back', products_path, class: "back-buttons" %>
 
 
 
