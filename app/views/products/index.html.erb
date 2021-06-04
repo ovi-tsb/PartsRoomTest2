@@ -4,6 +4,7 @@
 <!-- <p id="notice"><%#= notice %></p> -->
 <div class="min-height">
   <h1 class="top-mobile-screen">Parts</h1>
+  
   <span>
     <%= form_tag products_path, :method => 'get' do %>
       <div class="row">
@@ -73,19 +74,19 @@
   <!---------------- check all checkboxes --------------->
 
     <tbody>
-      
       <% @products.each do |product| %>
         <%# if product.status == "active" %>
-        <% if !product.image? %>
-          <tr class="no_mage_table_color">
-        <% elsif product.status != "active" %>
-          <tr style="background-color: #ffa791;" >
+        <% if product.status != "active" %>
+          <tr class="obsolete" >
+        <% elsif !product.image.url.present? %>
+          <tr class="no_image_table_color">
         <% else %>
           <tr>
         <% end %>
+      
             <td class="hide-content hide-medium"><%= product.id %></td>
             <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
-              <td>
+              <td class="hide-content hide-medium">
                 <% if product.status == "active" %>
                   <%= form.check_box :products_ids, {multiple: true}, product.id %>
                 <% end %>    

@@ -227,12 +227,21 @@ input:checked + .slider:before {
   -webkit-box-shadow: 5px 15px 16px -1px rgba(0,0,0,0.73); 
   box-shadow: 5px 15px 16px -1px rgba(0,0,0,0.73);
 }
-.no_mage_table_color{
-  background-color: #b9b3fc;
+.no_image_table_color{
+  background-color: #b9b3fc !important;
+}
+.obsolete{
+  background-color: #ffa791 !important;
 }
 .hide-check-box{
   visibility: hidden !important;
   background-color: #ffa791 !important;
+}
+.top-mobile-screen{
+  margin-top: -40px;
+}
+#search{
+  margin-top: 5px;
 }
 
 
@@ -301,7 +310,7 @@ input:checked + .slider:before {
  }
   .btn-custom-class { 
     width: 100%; 
-    display:block; 
+    display:block;
   }
   .custom-login{
     // width: 100%; 
