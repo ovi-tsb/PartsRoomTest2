@@ -78,7 +78,7 @@
         <%# if product.status == "active" %>
         <% if product.status != "active" %>
           <tr class="obsolete" >
-        <% elsif !product.image.url.present? %>
+        <% elsif !product.featured_image.attached? %>
           <tr class="no_image_table_color">
         <% else %>
           <tr>

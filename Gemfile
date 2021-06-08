@@ -12,12 +12,15 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
-gem 'carrierwave'
-gem 'fog-aws'
+# gem 'carrierwave'
+# gem 'fog-aws'
 # gem 'carrierwave-aws'
 # gem 'fog', '~> 2.1'
+gem "aws-sdk-s3", require: false
+
 gem 'rmagick'
 gem 'activemodel', '>= 5.2.4.4'
+gem 'image_processing', '~> 0.2.3'
 
 gem 'devise', '~> 4.2'
 gem 'bootstrap', '~> 4.1.1'

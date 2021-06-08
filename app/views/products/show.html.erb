@@ -73,10 +73,11 @@
         </div>
         
       </div>
+      
       <div class="col-12 col-md-4 col-sm-12 col-lg-6">
         <div class="product-image">
-          <% if @product.image.url %>
-            <%= image_tag(@product.image.url, class: "img-responsive") %>
+          <% if @product.featured_image.attached? %>
+            <%= image_tag @product.featured_image, style: "width: 350px; display: block;", class: "img-responsive" %>
           <% else %>
             <div class="no-image">No image available...</div>
           <% end %>

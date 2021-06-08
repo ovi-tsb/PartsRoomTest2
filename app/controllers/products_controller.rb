@@ -151,7 +151,7 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:id, :name, :url, :qty, :image, :description, :supplier_number, 
-                                      :item_no, :location, :supplier_name, :status, :plant_id)
+                                      :item_no, :location, :supplier_name, :status, :plant_id, :featured_image)
     end
 
     def sort_column

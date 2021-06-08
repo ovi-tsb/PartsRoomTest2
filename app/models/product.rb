@@ -2,6 +2,14 @@ class Product < ApplicationRecord
 
 	belongs_to :plant
 
+	has_one_attached :featured_image, dependent: :destroy
+
+	def featured_image_url
+	  if self.featured_image.attachment
+	    self.featured_image.attachment.service_url
+	  end
+	end
+
 	after_create :generate_code
 	mount_uploader :image, ImageUploader
 
