@@ -11,7 +11,7 @@ class Product < ApplicationRecord
 	end
 
 	after_create :generate_code
-	mount_uploader :image, ImageUploader
+	# mount_uploader :image, ImageUploader
 
 	enum status: { active: 0, obsolete: 1}
 
