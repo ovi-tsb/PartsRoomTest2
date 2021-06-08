@@ -15,4 +15,8 @@
 puts "Super user created."
 
 
+@plant = Plant.create(name: "London")
+puts "London plant created."
 
+@plant1 = Plant.create(name: "Mississauga")
+puts "Mississauga plant created."

@@ -57,14 +57,9 @@
       <%= form.hidden_field :plant_id, :value => current_user.plant_id %>
       
     </div>
-    
-    <div class="field">
-      <%= form.label :image %><br>
-      <%= form.file_field :image, accept: "image/jpeg, image/jpg, image/gif, image/png", class: "glyphicon glyphicon-download-alt" %>
-    </div>
 
     <div class="field">
-      <%= form.label :image_2 %><br>
+      <%= form.label :image %><br>
       <%= form.file_field :featured_image, class: "glyphicon glyphicon-download-alt" %>
     </div>
 
