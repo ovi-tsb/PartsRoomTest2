@@ -9,9 +9,9 @@ class ProductsController < ApplicationController
   def index
     # @products = Product.all
     if current_user.try(:type) == 'SuperUser'
-      @products = Product.order(sort_column + " " + sort_direction).search(params[:search]).paginate(page: params[:page], per_page: 6)
+      @products = Product.order(sort_column + " " + sort_direction).search(params[:search]).paginate(page: params[:page], per_page: 20)
     elsif 
-      @products = Product.where(plant_id: current_user.plant_id).order(sort_column + " " + sort_direction).search(params[:search]).paginate(page: params[:page], per_page: 6)
+      @products = Product.where(plant_id: current_user.plant_id).order(sort_column + " " + sort_direction).search(params[:search]).paginate(page: params[:page], per_page: 20)
     # @products = Product.order(params[:sort])
   end
   end

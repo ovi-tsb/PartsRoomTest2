@@ -115,7 +115,7 @@ table td {
  }
 
 .sort-table th .current {
-  padding: 5px 25px 0 0 ;
+  padding: 2px 18px 0 0 ;
 
   background-repeat: no-repeat;
   background-position: right center;
@@ -123,12 +123,12 @@ table td {
 
 .sort-table th .asc{
   background-image: url('https://s3.us-east-2.amazonaws.com/parts-room/up-arrow.jpeg');
-  background-size: 20px 20px !important;
+  background-size: 12px 12px !important;
 }
 
 .sort-table th .desc{
   background-image: url('https://s3.us-east-2.amazonaws.com/parts-room/down-arrow.jpeg');
-  background-size: 20px 20px !important;
+  background-size: 12px 12px !important;
 }
 
 
