@@ -20,6 +20,8 @@ ActiveStorage.start()
 
 import "controllers"
 
+global.$ = require('jquery')
+
 // console.log("Hello world!");
 // $(function(){
 //       $('#btn').click(function(){
