@@ -114,12 +114,17 @@ class ProductsController < ApplicationController
 ############### Big QR #########################
 ############### Small QR #########################
     labels = Prawn::Labels.render(selected_products, :type => "Avery5160") do |pdf, selected_product|
-      pdf.draw_text selected_product.description.upcase.truncate(32),:style => :bold, :at => [15,55], :size => 10, overflow: :truncate
+      if selected_product.description
+        pdf.draw_text selected_product.description.upcase.truncate(32),:style => :bold, :at => [15,55], :size => 10, overflow: :truncate
+      end
       pdf.svg QrCode.call(product_url(selected_product)), :at => [15,50], :width => 45, :height => 45, :align => :left # [5 is x and 70 is y]
       pdf.draw_text "Item.#: " + selected_product.item_no, :at => [75,40], :size => 9
-      pdf.draw_text "Location: " + selected_product.location, :at => [75,22], :size => 9
-      pdf.draw_text "Supp.#: " + selected_product.supplier_number, :at => [75,7], :size => 9
-      
+      if selected_product.location
+        pdf.draw_text "Location: " + selected_product.location, :at => [75,22], :size => 9
+      end
+      if selected_product.supplier_number
+        pdf.draw_text "Supp.#: " + selected_product.supplier_number, :at => [75,7], :size => 9
+      end
     end
 ############### Small QR #########################
 
