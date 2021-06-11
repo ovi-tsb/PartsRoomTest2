@@ -327,7 +327,14 @@ input:checked + .slider:before {
   .top-mobile-screen{
     margin-top: -40px;
   }
-
+  td{
+   max-width: 100px; 
+   word-wrap:break-word;
+  }
+  .paginate{
+    font-size: 0.7em;
+    color: red;
+  }
 
 
 
@@ -339,7 +346,12 @@ input:checked + .slider:before {
   table {
   // display: block;
   margin: 0 auto;
-  font-size: 1.05em;
+  font-size: 1.15em;
+
+ }
+ td{
+  max-width: 140px; 
+  word-wrap:break-word;
  }
 }
 /***************    Iphone 6/7/8   ***********/
@@ -347,8 +359,14 @@ input:checked + .slider:before {
   table {
   // display: block;
   margin: 0 auto;
-  font-size: 0.85em;
+  font-size: 0.9em;
+
  }
+ td{
+  max-width: 110px; 
+  word-wrap:break-word;
+ }
+ 
 }
 
 /*////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -393,6 +411,12 @@ input:checked + .slider:before {
   }
   .top-mobile-screen{
     margin-top: -30px;
+  }
+  table{
+    font-size: 0.85em;
+  }
+  .paginate{
+    font-size: 0.8em;
   }
   
 

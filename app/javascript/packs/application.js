@@ -22,19 +22,6 @@ import "controllers"
 
 global.$ = require('jquery')
 
-// console.log("Hello world!");
-// $(function(){
-//       $('#btn').click(function(){
-//         window.location = '/tags/' + $('#tag_value').val()
-//         console.log("Hello world!");
-//       })
-//     })
-
-// $(':input').bind('keypress keydown keyup change',function(){
-//     var word = $(':input[id="keyword"]').val();
-//     $('a[id="searchlink"]').attr("href","/home/search?param1=" + word.toString());
-
-// });
 
 
 /// When you click everywhere in the document
