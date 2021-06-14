@@ -91,7 +91,7 @@
               </td>
             <% end %>
             <td><%=  link_to truncate(product.item_no.upcase.truncate(12)).html_safe, product %></td>
-            <td><%= link_to truncate(product.description.truncate(22)).capitalize.html_safe, product if product.description %></td>
+            <td><%= link_to truncate(product.description.truncate(32)).capitalize.html_safe, product if product.description %></td>
             <td class="hide-content"><%= product.supplier_number.upcase if product.supplier_number %></td>
             <td><%= product.qty %></td>
             <td class="hide-content"><%= product.location.upcase if product.location %></td>
