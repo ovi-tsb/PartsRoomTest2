@@ -3,6 +3,8 @@
   
   <span>
     <%= form_tag products_path, :method => 'get' do %>
+      <%= hidden_field_tag :direction, params[:direction] %>
+      <%= hidden_field_tag :sort, params[:sort] %>
       <div class="row">
         <div class="col-sm-12 col-xs-12 col-md-4 col-lg-2">
           <%= text_field_tag :search, params[:search], id: 'search' %>
@@ -88,11 +90,11 @@
                 <% end %>    
               </td>
             <% end %>
-            <td><%=  link_to truncate(product.item_no.truncate(12)).html_safe, product %></td>
+            <td><%=  link_to truncate(product.item_no.upcase.truncate(12)).html_safe, product %></td>
             <td><%= link_to truncate(product.description.truncate(22)).capitalize.html_safe, product if product.description %></td>
-            <td class="hide-content"><%= product.supplier_number %></td>
+            <td class="hide-content"><%= product.supplier_number.upcase if product.supplier_number %></td>
             <td><%= product.qty %></td>
-            <td class="hide-content"><%= product.location %></td>
+            <td class="hide-content"><%= product.location.upcase if product.location %></td>
             <td class="hide-content hide-medium"><%= product.supplier_name %></td>
             <!-- <td><%#= QrCode.call(product_url(product))%></td> -->
             <% if current_user.try(:type) != 'AdminUser' && current_user.try(:type) != 'SuperUser' %>

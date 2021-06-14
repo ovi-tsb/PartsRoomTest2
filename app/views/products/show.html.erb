@@ -15,7 +15,6 @@
 <% else %>
   <div class="card card-body " style="background-color: #ffa791;">
 <% end %>
-  
 
     <div class="row">
       <div class="col-12 col-md-8 col-lg-6">
@@ -103,7 +102,7 @@
     <% if current_user.try(:type) == 'AdminUser' %>
       <%= link_to 'Edit', edit_product_path(@product) %>  | 
     <% end %>
-    <%= link_to 'Back', products_path %>
+    <%= link_to 'Back', :back %>
   </div>
 
 </div>

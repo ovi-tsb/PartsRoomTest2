@@ -30,7 +30,10 @@ class Product < ApplicationRecord
 
 	  else
 	    # find(:all)
+	    
 	    Product.all
+
+	    
 	  end
 	end
 
