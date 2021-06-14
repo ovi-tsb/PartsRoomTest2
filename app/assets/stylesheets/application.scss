@@ -244,6 +244,31 @@ input:checked + .slider:before {
   margin-top: 5px;
 }
 
+.pagination {
+  display:inline-block;
+  form {
+    display: inline-block;
+    margin:0;
+    
+    select {
+      width:70px;
+      height: 30px;
+      color: #007BFF;
+    }
+  }
+
+}
+.go-to-page{
+  display: table-cell;
+  vertical-align: middle; 
+  color: #007BFF;
+}
+.select-page{
+  display: table-cell;
+  vertical-align: middle;
+  color: #007BFF;
+}
+
 
 
 /*/////////////////////////////////////////////

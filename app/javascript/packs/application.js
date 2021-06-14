@@ -24,6 +24,7 @@ global.$ = require('jquery')
 
 
 
+
 /// When you click everywhere in the document
 $(document).click(function (event) {
 
@@ -36,6 +37,16 @@ $(document).click(function (event) {
   }
 });
 
+//////  GO TO Page /////////////////////
+
+jQuery(document).ready(function($) {
+  // trigger pagination
+  $(".pagination form select").change(function(e) {
+    $(this).parent("form").submit();
+  });
+});
+
+//////  GO TO Page /////////////////////
 
 
 
