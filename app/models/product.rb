@@ -26,7 +26,7 @@ class Product < ApplicationRecord
 	  if search
 	    
 	    # where('description ILIKE ? OR id::text LIKE ?', "%#{search}%", "%#{search}%")
-	    where('description ILIKE ? OR item_no ILIKE? OR supplier_number ILIKE ? OR location ILIKE ? OR supplier_name ILIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+	    where('description ILIKE ? OR item_no ILIKE? OR supplier_number ILIKE ? OR location ILIKE ? OR supplier_name ILIKE ? OR manufacturer_name ILIKE ? OR manufacturer_no ILIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
 
 	  else
 	    # find(:all)
