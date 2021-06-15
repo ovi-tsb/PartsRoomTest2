@@ -53,12 +53,15 @@
 }
 .prod-details{
   margin: 10px 0;
+
 }
 .prod-details span{
   font-size:20px;
   margin-left: 20px;
   float: right;
   font-style: italic;
+  word-break: break-all;
+  max-width: 67%;
 }
 
 .supplier_number{
