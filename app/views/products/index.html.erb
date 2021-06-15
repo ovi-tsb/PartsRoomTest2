@@ -38,7 +38,7 @@
       <tr class="sort-table">
         <th class="hide-content hide-medium">ID</th>
         <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
-          <th class="hide-content">
+          <th class="hide-content hide-medium">
             <input type="checkbox" id="selectAll" value="selectAll">
             <%= form.submit "Labels", data: { disable_with: false } %>
           </th>
@@ -49,8 +49,8 @@
         <th><%= sortable "qty" %></th>
         <th class="hide-content"><%= sortable "location" %></th>
         <th class="hide-content hide-medium"><%= sortable "supplier_name" %></th>
-        <th class="hide-content hide-medium"><%= sortable "manufacturer_name", "Manuf. name" %></th>
-        <th class="hide-content hide-medium"><%= sortable "manufacturer_no", "Manuf. #" %></th>
+        <th class="hide-content hide-medium"><%= sortable "manufacturer_name", "Man. name" %></th>
+        <th class="hide-content hide-medium"><%= sortable "manufacturer_no", "Man. #" %></th>
         <th><%= sortable "status" %></th>
         <!-- <th>QR-Code</th> -->
         <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
