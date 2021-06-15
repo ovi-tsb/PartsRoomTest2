@@ -118,12 +118,12 @@ class ProductsController < ApplicationController
         pdf.draw_text selected_product.description.upcase.truncate(32),:style => :bold, :at => [5,50], :size => 10, overflow: :truncate
       end
       pdf.svg QrCode.call(product_url(selected_product)), :at => [5,45], :width => 45, :height => 45, :align => :left # [5 is x and 70 is y]
-      pdf.draw_text "Item.#: " + selected_product.item_no.upcase.truncate(25), :at => [60,30], :size => 9
+      pdf.draw_text "Item.#: " + selected_product.item_no.upcase.truncate(20), :at => [60,30], :size => 9
       if selected_product.location
-        pdf.draw_text "Location: " + selected_product.location.upcase.truncate(25), :at => [60,15], :size => 9
+        pdf.draw_text "Location: " + selected_product.location.upcase.truncate(12), :at => [60,15], :size => 9
       end
       if selected_product.supplier_number
-        pdf.draw_text "Supp.#: " + selected_product.supplier_number.upcase.truncate(25), :at => [60,2], :size => 9
+        pdf.draw_text "Supp.#: " + selected_product.supplier_number.upcase.truncate(20), :at => [60,2], :size => 9
       end
     end
 ############### Small QR #########################
