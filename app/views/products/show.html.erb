@@ -64,6 +64,28 @@
                 </span>
               </h6>
             </div>
+            <div class="card card-body bg-light prod-details">
+              <h6 class="prod-details">Location:
+                <span>
+                  <% if @product.manufacturer_name? %>
+                    <%= @product.manufacturer_name.capitalize %>
+                  <% else %>
+                    <h6>N/A</h6>
+                  <% end %>
+                </span>
+              </h6>
+            </div>
+            <div class="card card-body bg-light prod-details">
+              <h6 class="prod-details">Location:
+                <span>
+                  <% if @product.manufacturer_no? %>
+                    <%= @product.manufacturer_no.capitalize %>
+                  <% else %>
+                    <h6>N/A</h6>
+                  <% end %>
+                </span>
+              </h6>
+            </div>
             
           </div>
           <div class="col-sm-12 col-xs-12 col-lg-3">

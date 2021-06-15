@@ -49,6 +49,8 @@
         <th><%= sortable "qty" %></th>
         <th class="hide-content"><%= sortable "location" %></th>
         <th class="hide-content hide-medium"><%= sortable "supplier_name" %></th>
+        <th class="hide-content hide-medium"><%= sortable "manufacturer_name" %></th>
+        <th class="hide-content hide-medium"><%= sortable "manufacturer_no" %></th>
         <th><%= sortable "status" %></th>
         <!-- <th>QR-Code</th> -->
         <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
@@ -93,10 +95,12 @@
             <% end %>
             <td><%=  link_to truncate(product.item_no.upcase.truncate(12)).html_safe, product %></td>
             <td><%= link_to truncate(product.description.truncate(32)).capitalize.html_safe, product if product.description %></td>
-            <td class="hide-content"><%= product.supplier_number.upcase.truncate(22) if product.supplier_number %></td>
+            <td class="hide-content"><%= product.supplier_number.upcase.truncate(16) if product.supplier_number %></td>
             <td><%= product.qty %></td>
-            <td class="hide-content"><%= product.location.upcase.truncate(22) if product.location %></td>
-            <td class="hide-content hide-medium"><%= product.supplier_name.truncate(22) if product.supplier_name %></td>
+            <td class="hide-content"><%= product.location.upcase.truncate(8) if product.location %></td>
+            <td class="hide-content hide-medium"><%= product.supplier_name.truncate(16) if product.supplier_name %></td>
+            <td class="hide-content hide-medium"><%= product.manufacturer_name.truncate(16) if product.manufacturer_name %></td>
+            <td class="hide-content hide-medium"><%= product.manufacturer_no.truncate(16) if product.manufacturer_no %></td>
             <!-- <td><%#= QrCode.call(product_url(product))%></td> -->
             <% if current_user.try(:type) != 'AdminUser' && current_user.try(:type) != 'SuperUser' %>
               <td><%= link_to 'Use', use_product_path(product), class: "btn btn-primary" %></td>
