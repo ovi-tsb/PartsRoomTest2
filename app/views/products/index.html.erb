@@ -143,14 +143,19 @@
       <h6 class="go-to-page"> Go To Page:</h6> 
       <span class="select-page">
         <%= will_paginate(@products, pagination_options) %>
-      </span>  
-      
-    
-  </div>
- 
-  
+      </span> 
+      <script type='text/javascript'>
+        // jQuery(document).ready(function($) {
+          // trigger pagination
+          $(".pagination form select").change(function(e) {
+            $(this).parent("form").submit();
+          });
+        // });
 
-  
+
+        
+      </script> 
+  </div>
 </div>
 
 
