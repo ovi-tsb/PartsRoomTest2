@@ -15,14 +15,24 @@
     <link  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
-    <script>
+   <!--  <script>
       if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
         window.location = 'microsoft-edge:' + window.location;
         setTimeout(function() {
           window.location = 'https://go.microsoft.com/fwlink/?linkid=2135547';
         }, 1);
       }
+    </script> -->
+    <script>
+      if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            window.location = 'microsoft-edge:' + window.location;
+            setTimeout(function() {
+               window.open('', '_self', '').close();
+               // window.location = 'https://support.microsoft.com/en-us/topic/we-recommend-viewing-this-website-in-microsoft-edge-160fa918-d581-4932-9e4e-1075c4713595?ui=en-us&rs=en-us&ad=us';            
+            }, 0);
+         }
     </script>
+
   </head>
 
   <body>
