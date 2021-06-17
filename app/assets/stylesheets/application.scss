@@ -286,8 +286,36 @@ input:checked + .slider:before {
   vertical-align: middle;
   color: #007BFF;
 }
+.ie-radio{
+  display: none;
+}
+.field label{
+  margin-top: 15px;
+  margin-bottom: -10px;
+}
 
 
+
+
+
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     /* IE10+ CSS styles go here */
+
+     .switch{
+        // display: none;
+     }
+     .ie-radio input{
+       // flex: 1 0 auto;
+       // display: flex;
+       // flex-direction: column;
+       // border: 1px solid red;
+       // width : 120px;
+       // margin-left: 80px;
+       // margin-top: -25px;
+     }
+
+}
 
 /*/////////////////////////////////////////////
 ///////////////////////////////////////////////*/

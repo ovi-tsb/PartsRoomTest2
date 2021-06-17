@@ -124,7 +124,8 @@
     <% if current_user.try(:type) == 'AdminUser' %>
       <%= link_to 'Edit', edit_product_path(@product) %>  | 
     <% end %>
-    <%= link_to 'Back', :back %>
+    <%= link_to 'Back', :back %> |
+    <%= link_to 'Products', products_path %>
   </div>
 
 </div>

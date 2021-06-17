@@ -74,10 +74,16 @@
     <div class="field">
       <%= form.label :activ %>
       <label class="switch">
-      <%= form.check_box :status,{}, "active", "obsolete" %>
-      <span class="slider round">
-      </span>
+        <%= form.check_box :status,{}, "active", "obsolete" %>
+        <span class="slider round">
+        </span>
       </label>
+      <div class="ie-radio">
+        <%#= label :status, 'Activ' %>
+        <%#= form.radio_button :status, "active", :checked => true %>
+        <%= label :status, 'Obsolete' %>
+        <%#= form.radio_button :status, "obsolete", :checked => true %>
+      </div>
     </div>
     <br><br>
 
