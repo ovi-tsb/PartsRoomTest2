@@ -1,6 +1,6 @@
 @import "bootstrap/scss/bootstrap";
 // @import "font-awesome";
-@import "form-style-5.sccs";
+@import "form-style-5.css";
 @import "bourbon";
 
 
@@ -292,6 +292,9 @@ input:checked + .slider:before {
 .field label{
   margin-top: 15px;
   margin-bottom: -10px;
+}
+footer{
+  margin-top: 90px;
 }
 
 

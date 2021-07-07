@@ -1,44 +1,46 @@
-<div class="form-style-5">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <fieldset>
-      <legend><span class="number">1</span>Log in</legend>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your Email" %>
-      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+<div class="min-height">
+  <div class="form-style-5">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <fieldset>
+        <legend><span class="number">1</span>Log in</legend>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your Email" %>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+        <br>
+        <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+        <!-- <label for="job">Interests:</label>
+        <select id="job" name="field4">
+        <optgroup label="Indoors">
+          <option value="fishkeeping">Fishkeeping</option>
+          <option value="reading">Reading</option>
+          <option value="boxing">Boxing</option>
+          <option value="debate">Debate</option>
+          <option value="gaming">Gaming</option>
+          <option value="snooker">Snooker</option>
+          <option value="other_indoor">Other</option>
+        </optgroup>
+        <optgroup label="Outdoors">
+          <option value="football">Football</option>
+          <option value="swimming">Swimming</option>
+          <option value="fishing">Fishing</option>
+          <option value="climbing">Climbing</option>
+          <option value="cycling">Cycling</option>
+          <option value="other_outdoor">Other</option>
+        </optgroup>
+        </select>    -->   
+      
+      </fieldset>
       <br><br>
-      <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end %>
-      <!-- <label for="job">Interests:</label>
-      <select id="job" name="field4">
-      <optgroup label="Indoors">
-        <option value="fishkeeping">Fishkeeping</option>
-        <option value="reading">Reading</option>
-        <option value="boxing">Boxing</option>
-        <option value="debate">Debate</option>
-        <option value="gaming">Gaming</option>
-        <option value="snooker">Snooker</option>
-        <option value="other_indoor">Other</option>
-      </optgroup>
-      <optgroup label="Outdoors">
-        <option value="football">Football</option>
-        <option value="swimming">Swimming</option>
-        <option value="fishing">Fishing</option>
-        <option value="climbing">Climbing</option>
-        <option value="cycling">Cycling</option>
-        <option value="other_outdoor">Other</option>
-      </optgroup>
-      </select>    -->   
-    
-    </fieldset>
-    
-  <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
-  <% end %>
-  <%= render "devise/shared/links" %>
+    <div class="actions">
+        <%= f.submit "Log in" %>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+  </div>
 </div>
 
 
