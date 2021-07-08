@@ -109,13 +109,13 @@
 
     <div class="row show-buttons">
       <div class="col-md-3">
-        <%= link_to 'Use', use_product_path(@product), class: "btn btn-danger btn-block" %>
+        <%= link_to 'Use', use_product_path(@product), class: "btn btn-danger btn-block btn-shadow" %>
       </div>
       <div class="col-md-6">
       </div>
       <div class="col-md-3">
         <% if current_user.try(:type) == 'AdminUser' || current_user.try(:type) == 'SuperUser' %>
-          <%= link_to 'Add', add_product_path(@product), class: "btn btn-primary btn-block" %>
+          <%= link_to 'Add', add_product_path(@product), class: "btn btn-primary btn-block btn-shadow" %>
         <% end %>
       </div>
     </div>

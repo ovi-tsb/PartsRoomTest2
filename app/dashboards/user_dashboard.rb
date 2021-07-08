@@ -24,7 +24,7 @@ class UserDashboard < Administrate::BaseDashboard
     type: Field::String.with_options(searchable: false),
     # plant_id: Field::String.with_options(collection: User.all.map do |plant| [plant.plant_id] end, searchable: true),
     plant_id: Field::Select.with_options(collection: Plant.all.map do |plant| [plant.name.capitalize + " - ID:  #{plant.id}", plant.id] end, searchable: true),
-
+    
     }.freeze
 
   # COLLECTION_ATTRIBUTES

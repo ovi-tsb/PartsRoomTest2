@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  
-  
-
   namespace :admin do
       resources :users
       resources :admin_users
@@ -20,8 +17,6 @@ Rails.application.routes.draw do
   get 'use_parts/show'
   get 'use_parts/new'
 
-
-
   resources :products do
     member do
       get :use
@@ -37,22 +32,11 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
-  
-  # authenticated do
-  #   root :to => 'products#index'
-  # end
+  # devise_for :users
+  devise_for :users, controllers: {registrations:'users/registrations'}
+
   root 'home#index'
 
   get 'home/index'
-  
-
-  
-   
-
-    
-
-  # resources :products, path: "show"
-
 
 end
