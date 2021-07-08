@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+@plant = Plant.create(name: "London")
+puts "London plant created."
+
+@plant1 = Plant.create(name: "Mississauga")
+puts "Mississauga plant created."
 
 
 
@@ -19,11 +24,6 @@
 puts "Super user created."
 
 
-@plant = Plant.create(name: "London")
-puts "London plant created."
-
-@plant1 = Plant.create(name: "Mississauga")
-puts "Mississauga plant created."
 
 
 
