@@ -13,7 +13,8 @@
                     password: "123456", 
                     password_confirmation: "123456", 
                     first_name: "Tom", 
-                    last_name: "Hood"
+                    last_name: "Hood",
+                    plant_id: "1"
                   )
 puts "Super user created."
 
