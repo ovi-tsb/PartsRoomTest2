@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   	belongs_to :plant, optional: true
 
-	validates :plant_id, :presence => true
+	validates :plant_id, :presence => true, if: -> {current_user.try(:type) != 'SuperUser'}
 	validates :first_name, :presence => true
 	validates :last_name, :presence => true
 

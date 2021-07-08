@@ -31,15 +31,15 @@ puts "Mississauga plant created."
 #####  CSV London
 
 
-# require 'csv'
+require 'csv'
 
-# CSV.foreach("lib/seeds/CSVLondonParts.csv", { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|
-#   Product.create(row.to_hash)
-# end
+CSV.foreach("lib/seeds/CSVLondonParts.csv", { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|
+  Product.create(row.to_hash)
+end
 
 
 
-# puts "There are now #{Product.count} rows in the product table"
+puts "There are now #{Product.count} rows in the product table"
 
 
 
