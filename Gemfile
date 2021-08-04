@@ -18,7 +18,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'fog', '~> 2.1'
 gem "aws-sdk-s3", require: false
 
-gem 'rmagick'
+# gem 'rmagick'
 gem 'activemodel', '>= 5.2.4.4'
 gem 'image_processing', '~> 0.2.3'
 
@@ -64,4 +64,7 @@ end
 
 
 gem "rqrcode", "~> 1.2"
+
+gem 'redis', '>= 4.0.0'
+gem 'sidekiq'
 
